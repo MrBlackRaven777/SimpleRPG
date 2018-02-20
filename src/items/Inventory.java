@@ -37,7 +37,7 @@ public class Inventory {
 	public String getItems() {
 		String itemNames = "";
 		for (Items item : items) {
-			itemNames += item.name;
+			itemNames += item.name + " ("+ item.type + ")";
 			itemNames += ", ";
 		}
 		itemNames = itemNames.substring(0, itemNames.length()-2) + ".";
@@ -45,6 +45,7 @@ public class Inventory {
 	}
 	
 	public void checkWeight() {
-		System.out.println("Inventory filled by "+this.weight + " of "+this.maxweight+". Free space is " + (this.maxweight-this.weight) + ".");
+		System.out.println("Inventory filled by "+this.weight + " of "+this.maxweight+". "
+				+ "Free space is " + (this.maxweight-this.weight) + ".");
 	}
 }
