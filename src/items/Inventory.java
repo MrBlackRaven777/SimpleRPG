@@ -8,6 +8,7 @@ public class Inventory {
 	private ArrayList<Items> items = new ArrayList<>(); 
 	
 	public Inventory() {
+		System.out.println("You picked up an old dusty bag.");
 		this.weight = 0;
 	}
 	
@@ -34,14 +35,23 @@ public class Inventory {
 	public static int getMaxweight() {
 		return maxweight;
 	}
-	public String getItems() {
+	public void printItems() {
 		String itemNames = "";
 		for (Items item : items) {
 			itemNames += item.name + " ("+ item.type + ")";
 			itemNames += ", ";
 		}
 		itemNames = itemNames.substring(0, itemNames.length()-2) + ".";
-		return itemNames;
+		System.out.println("In your inventory: " + itemNames);
+	}
+	public String[] getItemList() {
+		String[] itemList = new String [items.size()];
+		int i=0;
+		for (Items item : items) {
+			itemList[i] = item.name;
+			i++;
+		}
+		return itemList;
 	}
 	
 	public void checkWeight() {

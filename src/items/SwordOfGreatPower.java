@@ -1,5 +1,6 @@
 package items;
 import main.Character;
+import items.Inventory;
 
 public class SwordOfGreatPower extends Sword {
 
@@ -15,12 +16,13 @@ public class SwordOfGreatPower extends Sword {
 
 	@Override
 	void pickup() {
-		System.out.println("You've picked up the " + name);
+		System.out.println("You're picked up the " + name);
+		
 	}
 
 	@Override
 	void drop() {
-		// TODO Auto-generated method stub
+		System.out.println("You're droped the " + name);
 
 	}
 
