@@ -2,9 +2,9 @@ package items;
 
 public abstract class Items {
 
-	static int weight;
-	static String type;
-	static String name;
+	public int weight;
+	public String type;
+	public String name;
 	
 	abstract void pickup();
 	abstract void drop();

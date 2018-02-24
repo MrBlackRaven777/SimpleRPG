@@ -4,6 +4,7 @@ import items.Inventory;
 import items.Items;
 import items.SwordOfGreatPower;
 import java.util.Scanner;
+import items.*;
 
 public class Character{
 	
@@ -13,6 +14,8 @@ public class Character{
 	private int hp;
 	private int defence;
 	private int damage;
+	private String leftHand;
+	private String rightHand;
 	
 	
 	public Character(String name) {
@@ -47,7 +50,34 @@ public class Character{
 		this.damage = damage;
 	}
 	
-	
+	public void equip(Inventory myInventory, String itemName) {
+	  if (myInventory.checkItem(itemName)){
+		  Items tempItem = myInventory.getItem(myInventory, itemName);
+		  String incrace="";
+		  switch (tempItem.type.toLowerCase()){
+			  case "weapon":
+				  Weapon tempWeapon = (Weapon) tempItem;
+				  this.damage += tempWeapon.damage;
+				  incrace = "(Atk:+"+tempWeapon.damage+")";
+				  if (tempWeapon.hand=='r')
+					  this.rightHand = tempWeapon.name;
+				  else if(tempWeapon.hand=='l')
+				  		this.leftHand=tempWeapon.name; 
+				  else if (tempWeapon.hand=='b')
+					  this.leftHand=tempWeapon.name;
+					  this.rightHand=tempWeapon.name;
+				  break;
+			  case "armor":
+				  Armor tempArmor = (Armor) tempItem;
+				  this.defence += tempArmor.defence;
+				  incrace = "(Def:+"+tempArmor.defence+")";
+				  break;
+		  }
+			  
+		  //this.damage += tempItem.damage;
+		  System.out.println("You equip "+tempItem.name+incrace);
+	  }
+}
 
 //	public static void main(String[] args) {
 //		Scanner scan = new Scanner(System.in);

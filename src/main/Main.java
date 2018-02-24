@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import items.Inventory;
 import items.SwordOfGreatPower;
-import main.*;
 
 public class Main {
 
@@ -30,6 +29,12 @@ public class Main {
 		//TODO Type "invent" to look into your inventory
 		myInventory.printItems();
 		myInventory.checkWeight();
+		System.out.println("Oh, great, now you have a sword! Equip them!");
+	 //TODO Type "equip ItemName" to equp item
+	    myChar.equip(myInventory, "Sword of Great Power");
+		System.out.println("Now try commands equip and walk");
+		MessageHandler msgHndl = new MessageHandler();
+		msgHndl.startHandling();
 	}
 
 }

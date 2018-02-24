@@ -1,5 +1,6 @@
 package items;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Inventory {
 	
@@ -52,6 +53,18 @@ public class Inventory {
 			i++;
 		}
 		return itemList;
+	}
+	public boolean checkItem(String itemName){
+	  return Arrays.asList(getItemList()).contains(itemName);
+}
+	public Items getItem(Inventory myInventory, String itemName){
+		int num = -1;
+		for(Items item : items){
+			if(item.name.equals(itemName)){
+				num=items.indexOf(item);
+				}
+		}
+		return items.get(num);
 	}
 	
 	public void checkWeight() {
