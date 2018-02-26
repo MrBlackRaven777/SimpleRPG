@@ -31,10 +31,10 @@ public class Main {
 		myInventory.checkWeight();
 		System.out.println("Oh, great, now you have a sword! Equip them!");
 	 //TODO Type "equip ItemName" to equp item
-	    myChar.equip(myInventory, "Sword of Great Power");
-		System.out.println("Now try commands equip and walk");
+//	    myChar.equip(myInventory, "Sword of Great Power");
+		System.out.println("Type equip <Item Name> to equip item from your inventory.");
 		MessageHandler msgHndl = new MessageHandler();
-		msgHndl.startHandling();
+		msgHndl.startHandling(myChar, myInventory);
 		System.out.println("Wow! You walk out!");
 	}
 }
