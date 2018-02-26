@@ -35,6 +35,6 @@ public class Main {
 		System.out.println("Now try commands equip and walk");
 		MessageHandler msgHndl = new MessageHandler();
 		msgHndl.startHandling();
+		System.out.println("Wow! You walk out!");
 	}
-
 }
