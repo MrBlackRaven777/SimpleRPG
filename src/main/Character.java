@@ -70,31 +70,21 @@ public class Character
             Items tempItem = myInventory.getItem(myInventory, itemName);
 			if (tempItem.equiped == false)
 			{
-				if (checkBody(tempItem))
+				if (bodyPart(tempItem)==null)
 				{
-					String incrace = "";
-					switch (tempItem.type.toLowerCase())
-					{
-						case "weapon":
-							Weapon tempWeapon = (Weapon) tempItem;
-							this.damage += tempWeapon.damage;
-							incrace = "(Dmg:+" + tempWeapon.damage + ")";
-							if (tempWeapon.hand == 'r')
-								this.rightHand = tempWeapon;
-							else if (tempWeapon.hand == 'l')
-								this.leftHand = tempWeapon;
-							else if (tempWeapon.hand == 'o')
-								this.leftHand = tempWeapon;
-							this.rightHand = tempWeapon;
-							break;
-						case "armor":
-							Armor tempArmor = (Armor) tempItem;
-							this.defence += tempArmor.defence;
-							incrace = "(Def:+" + tempArmor.defence + ")";
-							break;
-						case "potion":
-							System.out.println("You used the "+tempItem.name);
-					}
+					String incrace = "(";
+                    if (tempItem.hp != 0)
+                        this.hp += tempItem.hp;
+                        incrace += "HP+" + tempItem.hp + ";";
+                    if (tempItem.damage != 0)
+                        this.damage += tempItem.damage;
+                        incrace += "Dam+" + tempItem.damage + ";";
+                    if (tempItem.defence != 0)
+                        this.defence += tempItem.defence;
+                        incrace += "Def+" + tempItem.defence + ";";
+                //Опять же, как изучу словари, добавить замену пеметов в частях тела. пока что через Switch case
+
+
 					tempItem.equiped = true;
 					System.out.println("You equip " + tempItem.name + incrace);
 				}
@@ -121,43 +111,33 @@ public class Character
 			System.out.println(item.name + " not equiped");
 		}
 	}
-	
-	
-	
-	private boolean checkBody(Items item)
+
+
+
+	private Items bodyPart(Items item)
 	{
-		Items bodyPart;
+		//Возвращает часть тела, в которую должен встать item. в будущем надо будет заменить на map или collection, но я его пока не знаю
 		switch (item.bodyPart)
 		{
 			case 'h':
-				bodyPart = this.head;
-				break;
+				return this.head;
 			case 'b':
-				bodyPart = this.body;
-				break;
+                return this.body;
 			case 'l':
-				bodyPart = this.leftHand;
-				break;
+                return this.leftHand;
 			case 'r':
-				bodyPart = this.rightHand;
-				break;
+                return this.rightHand;
 			case 'o':
-				bodyPart = this.bothHands;
-				break;
+                return this.leftHand;// || this.rightHand;
 			case 'g':
-				bodyPart = this.legs;
-				break;
+                return this.legs;
 			case 't':
-				bodyPart = this.belt;
-				break;
+                return this.belt;
 			default:
 				System.out.println("Error: item's body part not set");
-				return false;
+				return null;
 		}
-		if (bodyPart == null)
-			return true;
-		else
-			return false;
+
 		}
 	}
 
