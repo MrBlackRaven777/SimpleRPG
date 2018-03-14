@@ -1,4 +1,6 @@
 package items;
+import items.Inventory;
+import main.Character;
 
 public abstract class Items {
 
@@ -17,5 +19,9 @@ public abstract class Items {
 	abstract void putOn();
 	abstract void takeOff();
 	
-
+	protected void equip(Character myChar, Inventory myInventory) {
+		this.equiped = true;
+		myChar.setHp(myChar.getHp() + this.hp);
+		
+	}
 }

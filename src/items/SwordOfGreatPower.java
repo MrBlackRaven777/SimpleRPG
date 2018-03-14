@@ -10,6 +10,7 @@ public class SwordOfGreatPower extends Sword {
 		weaponType = "Sword";
 		name = "Sword of Great Power";
 		hand = 'r';
+		bodyPart = 'r';
 
 		damage = 10;
 		weight = 5;
