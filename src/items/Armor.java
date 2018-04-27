@@ -1,6 +1,10 @@
 package items;
 
 public abstract class Armor extends Items{
- public static String armorType;
- public static int defence;
+
+
+    @Override
+    public String toString() {
+        return (this.equipped ? "(equipped)" : "") + this.name + "(Def" + chooseSign(defence) + ";HP" + chooseSign(hp) + ")";
+    }
 }

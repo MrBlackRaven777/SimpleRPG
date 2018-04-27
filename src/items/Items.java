@@ -1,4 +1,5 @@
 package items;
+import Characters.*;
 
 public abstract class Items {
 
@@ -6,16 +7,29 @@ public abstract class Items {
 	public int hp;
 	public int damage;
 	public int defence;
-	
-	public String type;
+
 	public String name;
-	public boolean equiped;
-	public char bodyPart;//where item equiped, 'h'-head, 'b'-body, 'l'-left hand, 'r'-right hand, 'o'-bOth hands, 'g'-leGs, 't'-on belT(e.g. potions)
-	
-	abstract void pickup();
-	abstract void drop();
-	abstract void putOn();
-	abstract void takeOff();
-	
+	public boolean equipped;
+	public BodyParts bodyPart;
+
+//	abstract void pickup();
+//	abstract void drop();
+
+    public String origin() {
+		return "Item->";
+	}
+
+	protected String chooseSign(Object number) {
+    	try {
+			if ((Integer) number >= 0) {
+				return "+" + number;
+			} else {
+				return "" + number;
+			}
+		} catch (Exception e) {
+			System.out.println("Exception:" + e);
+    		return "+" + number;
+			}
+	}
 
 }

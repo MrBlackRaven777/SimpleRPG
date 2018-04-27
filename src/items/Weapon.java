@@ -1,9 +1,14 @@
 package items;
 
 public abstract class Weapon extends Items {
-	
-	public static int damage;
-	public static String weaponType;
-	public static char hand;
 
+	@Override
+	public String origin() {
+		return super.origin() + "Weapon->";
+	}
+
+	@Override
+	public String toString() {
+		return (this.equipped ? "(equipped)" : "") + this.name + "(Dmg" + chooseSign(damage) + ";HP" + chooseSign(hp) + ")";
+	}
 }
