@@ -13,5 +13,4 @@ public class SwordOfGreatPower extends Sword {
 		hp = -2;
 		weight = 5;
 	}
-
 }

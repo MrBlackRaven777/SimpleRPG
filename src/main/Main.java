@@ -18,26 +18,29 @@ public class Main {
 	}
 	public static void main(String[] args) {
 
-		Scanner scan = new Scanner(System.in);
-        System.out.println("what's your name?");
-        MainCharacter.setMyChar(scan.nextLine());
-        MainCharacter myCharacter = MainCharacter.getCharacter();
+	    Loader loadGame = new Loader();
+	    loadGame.setAllItems();
 
-        myCharacter.getInventory().add(new SwordOfGreatPower());
-        System.out.println(myCharacter);
-        myCharacter.equip("Sword of Great Power");
-        System.out.println(myCharacter);
-        System.out.println(myCharacter.getInventory());
-
-        myCharacter.getInventory().add(new ShieldOfGreatResponsibility());
-        System.out.println(myCharacter.getInventory());
-        myCharacter.equip("Shield of Great Responsibility");
-        System.out.println(myCharacter);
-        System.out.println(myCharacter.getInventory());
-
-        myCharacter.unequip("Sword of Great Power");
-        System.out.println(myCharacter);
-        System.out.println(myCharacter.getInventory());
+//		Scanner scan = new Scanner(System.in);
+//        System.out.println("what's your name?");
+//        MainCharacter.setMyChar(scan.nextLine());
+//        MainCharacter myCharacter = MainCharacter.getCharacter();
+//
+//        myCharacter.getInventory().add(new SwordOfGreatPower());
+//        System.out.println(myCharacter);
+//        myCharacter.equip("Sword of Great Power");
+//        System.out.println(myCharacter);
+//        System.out.println(myCharacter.getInventory());
+//
+//        myCharacter.getInventory().add(new ShieldOfGreatResponsibility());
+//        System.out.println(myCharacter.getInventory());
+//        myCharacter.equip("Shield of Great Responsibility");
+//        System.out.println(myCharacter);
+//        System.out.println(myCharacter.getInventory());
+//
+//        myCharacter.unequip("Sword of Great Power");
+//        System.out.println(myCharacter);
+//        System.out.println(myCharacter.getInventory());
 
 
 

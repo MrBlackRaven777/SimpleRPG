@@ -9,8 +9,8 @@ public class GiantOrk extends Monster {
         this.defence = 7;
         this.damage = 3;
         Inventory monsterInv = new Inventory();
-        for (int i = 0; i < 3; i++) {
-
-        }
+//        for (int i = 0; i < 3; i++) {
+//
+//        }
     }
 }

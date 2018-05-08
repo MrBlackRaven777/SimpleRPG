@@ -13,5 +13,4 @@ public class ShieldOfGreatResponsibility extends Shield {
 		hp = 3;
 		weight = 5;
 	}
-
 }
