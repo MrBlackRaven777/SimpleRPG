@@ -1,5 +1,4 @@
 package main;
-import Characters.Character;
 import Characters.MainCharacter;
 import items.Inventory;
 

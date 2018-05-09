@@ -1,13 +1,8 @@
 package main;
 
-import java.util.Scanner;
-
-import Characters.Character;
+import Characters.GiantOrk;
 import Characters.MainCharacter;
-import items.Inventory;
-import items.Items;
-import items.ShieldOfGreatResponsibility;
-import items.SwordOfGreatPower;
+import Characters.Monster;
 
 public class Main {
 
@@ -18,8 +13,21 @@ public class Main {
 	}
 	public static void main(String[] args) {
 
-	    Loader loadGame = new Loader();
-	    loadGame.setAllItems();
+	    Loader loadGame = Loader.getLoader();
+	    loadGame.loadAllItems();
+	    MainCharacter myCharacter = MainCharacter.getCharacter();
+	    myCharacter.setMyChar("Tom Anderson");
+	    myCharacter.getInventory().add(loadGame.loadItem("SwordOfGreatPower"));
+        System.out.println(myCharacter.getInventory().toString());
+        System.out.println(myCharacter);
+        myCharacter.getInventory().add(loadGame.loadRandomItem());
+        System.out.println(myCharacter.getInventory());
+
+        Monster monster1 = new GiantOrk();
+        System.out.println(monster1.getInventory());
+        monster1.getInventory().add(loadGame.loadRandomItem());
+        System.out.println(monster1.getInventory());
+        System.out.println(monster1);
 
 //		Scanner scan = new Scanner(System.in);
 //        System.out.println("what's your name?");

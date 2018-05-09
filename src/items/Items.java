@@ -12,11 +12,6 @@ public abstract class Items {
 	public boolean equipped;
 	public BodyParts bodyPart;
 
-//	public abstract Items getInstance();
-
-//	abstract void pickup();
-//	abstract void drop();
-
     public String origin() {
 		return "Item->";
 	}

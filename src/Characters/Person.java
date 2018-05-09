@@ -12,7 +12,9 @@ public abstract class Person {
     protected int hp;
     protected int defence;
     protected int damage;
-    private static Map<BodyParts, Items> bodyParts = new HashMap<>();
+    protected Map<BodyParts, Items> bodyParts = new HashMap<>();
+
+    public abstract Inventory getInventory();
 
     public Person() {
 //        String[] parts = {"head", "body", "leftHand", "rightHand", "bothHands", "legs", "belt"};
@@ -61,5 +63,11 @@ public abstract class Person {
         } else {
             System.out.println("No item \"" + itemName + "\" into inventory.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "--------\nMonster\nName: " + this.Name + ";\nHP: " + this.hp + ";\nDamage: " + this.damage
+                + ";\nDefence: " + this.defence + ".\n------";
     }
 }

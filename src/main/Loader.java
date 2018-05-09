@@ -1,62 +1,46 @@
 package main;
 
-import items.*;
+import items.Items;
 
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Loader {
-    //Class that will load content from xml, now it's just contain links for auxiliary classes
-    public static ArrayList <Items> allItems = new ArrayList<>();
-    private static String[] itemsList = {"SwordOfGreatPower", "ShieldOfGreatResponsibility", "MithrilCoat", "SlamOfGrandTournaments", "PantsOfEqualDimensions"};
-    private int maxItems = 2;
+    private static Loader ourInstance = new Loader();
 
-    public void setAllItems() {
+    private static ArrayList<String> allItems = new ArrayList<>();
 
-        for (int i = 0; i < maxItems; i++) {
-            try {
-                Class c = Class.forName("items." + itemsList[new Random().nextInt(itemsList.length)]);
-                Object o = c.newInstance();
-                Items item = (Items) o;
-                System.out.println(item);
-                allItems.add(item);
+    public static Loader getLoader() {
+        return ourInstance;
+    }
 
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            }
+    private Loader() {
+    }
+
+    public void loadAllItems() {
+        //TODO load items from xml file
+        String[] tempList = {"SwordOfGreatPower", "ShieldOfGreatResponsibility", "MithrilCoat", "SlamOfGrandTournaments", "PantsOfEqualDimensions"};
+        allItems.addAll(Arrays.asList(tempList));
+    }
+
+    public Items loadItem(String itemName) {
+        try {
+            Class tmpClass = Class.forName("items." + itemName);
+            Object tmpObj = tmpClass.newInstance();
+            Items item = (Items) tmpObj;
+            return item;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Can't load item \"" + itemName + "\"");
+            return null;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return null;
         }
+    }
 
-//        try {
-//            Class c = Class.forName("items.SwordOfGreatPower");
-//            Object i = c.newInstance();
-//            Items f = (Items) i;
-//            System.out.println(f);
-//        } catch (ClassNotFoundException e) {
-//            e.getStackTrace();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (InstantiationException e) {
-//            e.printStackTrace();
-//        }
-
-//        for (int i = 0; i < 3; i++) {
-//            allItems.add(Class.forName("SwordOfGreatPower"));
-//        }
-//        for (Class i :
-//                allItems) {
-//            System.out.println(i.name);
-//        }
-
-//        allItems.add(new S    hieldOfGreatResponsibility());
-//        allItems.add(s);
-//        for (Items c:allItems) {
-//            System.out.println(c.name);
-//        }
-
+    public Items loadRandomItem() {
+        Items item = loadItem(allItems.get(new Random().nextInt(allItems.size())));
+        return item;
     }
 }

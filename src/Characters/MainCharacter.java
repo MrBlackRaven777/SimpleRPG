@@ -27,8 +27,9 @@ public class MainCharacter extends Person{
 
     @Override
     public String toString() {
-        return "--------\nMy name is " + Name + " and i don't know what's happening.\nHP:" + hp + "\nDamage:" + damage
-                + "\nDefence:" + defence + "\n------";
+        return "--------\nMy name is " + Name + " and i don't know what's happening.\nHP: " + hp + ";\nDamage: " + damage
+                + ";\nDefence: " + defence + ";\nInventory: " + myInventory.getWeight() + "/" + myInventory.getMaxweight()
+                + " (" + myInventory.getItemList().length + " item" + (myInventory.getItemList().length > 1 ? "s" : "") + ").\n------";
     }
 
     public void equip(String itemName) {

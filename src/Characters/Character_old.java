@@ -2,7 +2,7 @@ package Characters;
 
 import items.*;
 
-public class Character
+public class Character_old
 {
 
 
@@ -19,9 +19,9 @@ public class Character
 	private Items legs;
 	private Items belt;
 
-	private static Character MYCHAR = new Character();
+	private static Character_old MYCHAR = new Character_old();
 
-    private Character()
+    private Character_old()
 	{
 //        Name = name;
 //        Map bodyParts = new HashMap <String, Items>();
@@ -30,7 +30,7 @@ public class Character
 //		Items sword = new SwordOfGreatPower();
 //		myInventory.add(sword);
     }
-    public static Character getCharacter(){
+    public static Character_old getCharacter(){
         return MYCHAR;
     }
 
@@ -76,7 +76,7 @@ public class Character
 //	{
 //        if (myInventory.checkItem(itemName))
 //		{
-//            Items tempItem = myInventory.getItem(itemName);
+//            Items tempItem = myInventory.loadItem(itemName);
 //			if (tempItem.equipped == false)
 //			{
 //				if (bodyPart(tempItem)==null)

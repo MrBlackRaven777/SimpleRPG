@@ -1,11 +1,13 @@
 package items;
+import Characters.MainCharacter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Inventory {
 	
 	private int weight;
-	private static int maxweight = 20;
+	private int maxweight = 20;
 	private ArrayList<Items> items = new ArrayList<>();
 	
 	public Inventory() {
@@ -13,38 +15,51 @@ public class Inventory {
 	}
 	
 	public void add(Items item) {
-		if (this.weight+item.weight>maxweight) {
-			System.out.println("Not enough storage.");
-		}
-		else {
-			this.weight += item.weight;
-			items.add(item);
-			System.out.println(item.name + " added to inventory.");
-		}
+        boolean aloud = this.equals(MainCharacter.getCharacter().getInventory());
+//        System.out.println("aloud=" + aloud);
+        if (this.weight + item.weight <= maxweight) {
+            this.weight += item.weight;
+            items.add(item);
+            if (aloud) {
+                System.out.println(item.name + " added to your inventory.");
+            }
+
+        } else {
+            if (aloud) {
+                System.out.println("Not enough storage.");
+            }
+        }
 	}
 	
 	public void remove(Items item) {
+        boolean aloud = this.equals(MainCharacter.getCharacter().getInventory());
 		items.remove(item);
 		this.weight -= item.weight;
-		System.out.println(item.name + " was removed from inventory.");
-	}
+        if (aloud) {
+            System.out.println(item.name + " was removed from inventory.");
+        }
+    }
 	
-//	public int getWeight() {
-//		return weight;
-//	}
-//	public static int getMaxweight() {
-//		return maxweight;
-//	}
+	public int getWeight() {
+		return this.weight;
+	}
+	public int getMaxweight() {
+		return this.maxweight;
+	}
 
 	public String toString() {
-		String itemNames = "";
-		for (Items item : items) {
-//			itemNames += item.name + " ("+ item.type + ")";
-			itemNames += item.toString();
-			itemNames += ", ";
-		}
-		itemNames = itemNames.substring(0, itemNames.length()-2) + ".";
-		return "In your inventory: " + itemNames;
+	    if (this.equals(MainCharacter.getCharacter().getInventory())) { //когда сдеаю комнату, у нее тоже сделать инвентарь и туда ссыпать предметы с монстров
+            String itemNames = "";
+            for (Items item : items) {
+                //			itemNames += item.name + " ("+ item.type + ")";
+                itemNames += item.toString();
+                itemNames += ", ";
+            }
+            itemNames = itemNames.substring(0, itemNames.length() - 2) + ".";
+            return "In your inventory: " + itemNames + " Weight: " + this.weight + "/" + maxweight + ".";
+        } else {
+	        return "You can't see other's inventory.";
+        }
 	}
 
 	public String[] getItemList() {
