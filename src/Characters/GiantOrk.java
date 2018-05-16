@@ -6,6 +6,6 @@ public class GiantOrk extends Monster {
         this.hp = 20;
         this.defence = 7;
         this.damage = 3;
-        setupMonster();
+        equipMonster();
     }
 }

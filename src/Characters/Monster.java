@@ -4,7 +4,7 @@ import items.Inventory;
 import items.Items;
 import main.Loader;
 
-public abstract class Monster extends Person {
+public abstract class Monster extends Person implements Cloneable{
 
     private int maxItems = 3;
     private Inventory monsterInventory = new Inventory();
@@ -14,11 +14,15 @@ public abstract class Monster extends Person {
         return monsterInventory;
     }
 
-    protected void setupMonster() {
+    @Override
+    public Monster clone() throws CloneNotSupportedException {
+        return new MonsterTemplate(this.Name, this.hp, this.damage, this.defence);
+    }
+
+    protected void equipMonster() {
         for (int i = 0; i < maxItems; i++) {
             monsterInventory.add(Loader.getLoader().loadRandomItem());
         }
-        System.out.println(this);
         for (String item :
                 monsterInventory.getItemList()) {
             if (monsterInventory.getItem(item).equipped == false) {

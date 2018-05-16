@@ -12,6 +12,7 @@ public abstract class Person {
     protected int hp;
     protected int defence;
     protected int damage;
+    protected boolean alive;
     protected Map<BodyParts, Items> bodyParts = new HashMap<>();
 
     public abstract Inventory getInventory();

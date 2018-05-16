@@ -4,6 +4,8 @@ import Characters.GiantOrk;
 import Characters.MainCharacter;
 import Characters.Monster;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
 
 	public Main() {
@@ -14,20 +16,39 @@ public class Main {
 	public static void main(String[] args) {
 
 	    Loader loadGame = Loader.getLoader();
-	    loadGame.loadAllItems();
-	    MainCharacter myCharacter = MainCharacter.getCharacter();
+        Thread loading = new Thread(loadGame);
+        loading.start();
+        try {
+            loading.join();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+//        System.out.print("Loading");
+//        do {
+//            System.out.print(".");
+//            try {
+//                Thread.sleep(250);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        } while (loading.isAlive());
+
+        MainCharacter myCharacter = MainCharacter.getCharacter();
 	    myCharacter.setMyChar("Tom Anderson");
 	    myCharacter.getInventory().add(loadGame.loadItem("SwordOfGreatPower"));
-        System.out.println(myCharacter.getInventory().toString());
-        System.out.println(myCharacter);
+//        System.out.println(myCharacter.getInventory().toString());
+//        System.out.println(myCharacter);
         myCharacter.getInventory().add(loadGame.loadRandomItem());
         System.out.println(myCharacter.getInventory());
 
-        Monster monster1 = new GiantOrk();
-        System.out.println(monster1.getInventory());
+        Monster monster1 = loadGame.getMonster("Hobgoblin");
         monster1.getInventory().add(loadGame.loadRandomItem());
-        System.out.println(monster1.getInventory());
         System.out.println(monster1);
+
+        monster1.getInventory().test();
 
 //		Scanner scan = new Scanner(System.in);
 //        System.out.println("what's your name?");

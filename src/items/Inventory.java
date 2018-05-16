@@ -89,4 +89,15 @@ public class Inventory {
 		System.out.println("Inventory filled by " + this.weight + " of " + this.maxweight +
                 ". Free space is " + (this.maxweight-this.weight) + ".");
 	}
+
+	public void test(){
+        String itemNames = "";
+        for (Items item : items) {
+            //			itemNames += item.name + " ("+ item.type + ")";
+            itemNames += item.toString();
+            itemNames += ", ";
+        }
+        itemNames = itemNames.substring(0, itemNames.length() - 2) + ".";
+        System.out.println("In monster's inventory: " + itemNames + " Weight: " + this.weight + "/" + maxweight + ".");
+	}
 }
